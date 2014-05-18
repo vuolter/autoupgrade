@@ -15,4 +15,4 @@ setup(name='autoupgrade',
       description='Automatic upgrade of python modules and packages',
       long_description=open('README.txt').read(),
       packages=['autoupgrade'],
-      url = "http://www.google.com")
+      url = "https://bitbucket.org/jorkar/autoupgrade")
