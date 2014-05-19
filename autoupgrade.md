@@ -1,258 +1,208 @@
-  ----------------- -----------------------------------------------------------------------------------------------------------------------
-   \                [index](.)\
-    \               [/home/jorgen/dev/autoupgrade/autoupgrade/\_\_init\_\_.py](file:/home/jorgen/dev/autoupgrade/autoupgrade/__init__.py)
-  **autoupgrade**   
-  ----------------- -----------------------------------------------------------------------------------------------------------------------
+Help on package autoupgrade:
 
- \
- **Package Contents**
+NAME
+:   autoupgrade
 
-`      `
+FILE
+:   /home/jorgen/dev/autoupgrade/autoupgrade/\_\_init\_\_.py
 
- 
+PACKAGE CONTENTS
+:   version
 
-  -------------------------------------- -- -- --
-  [version](autoupgrade.version.html)\         
-                                               
-  -------------------------------------- -- -- --
+CLASSES
+:   \_\_builtin\_\_.object
+    :   AutoUpgrade
 
- \
- **Classes**
+    exceptions.Exception(exceptions.BaseException)
+    :   NoVersionsError PkgNotFoundError
 
-`      `
+    class AutoUpgrade(\_\_builtin\_\_.object)
+    :    AutoUpgrade class, holds one package
 
- 
+         Methods defined here:
 
-[\_\_builtin\_\_.object](__builtin__.html#object)
+         \_\_init\_\_(self, pkg, index=None)\
+             Args:\
+             pkg (str): name of package\
+             index (str): alternative index, if not given
+        <https://pypi.python.org> will be used
 
-[AutoUpgrade](autoupgrade.html#AutoUpgrade)
+         check(self)\
+             Check if pkg has a later version\
+             Returns true if later version exists.
 
-[exceptions.Exception](exceptions.html#Exception)([exceptions.BaseException](exceptions.html#BaseException))
+         restart(self)\
+             Restart application with same args as it was started.\
+             Does **not** return
 
-[NoVersionsError](autoupgrade.html#NoVersionsError)
+         upgrade(self, dependencies=False)\
+             Upgrade the package unconditionaly\
+             Args:\
+                 dependencies, update dependencies if True (see pip
+        --no-deps)
 
-[PkgNotFoundError](autoupgrade.html#PkgNotFoundError)
+         upgrade\_if\_needed(self, restart=True, dependencies=False)\
+             Upgrade the package if there is a later version available.\
+             Args:\
+                 restart, restart app if True\
+                 dependencies, update dependencies if True (see pip
+        --no-deps)
 
- \
- class
-**AutoUpgrade**([\_\_builtin\_\_.object](__builtin__.html#object))
+         ----------------------------------------------------------------------\
+         Data descriptors defined here:
 
-`   `
+         \_\_dict\_\_\
+             dictionary for instance variables (if defined)
 
-`AutoUpgrade class, holds one package `
+         \_\_weakref\_\_\
+             list of weak references to the object (if defined)
 
- 
+    class NoVersionsError(exceptions.Exception)
+    :    No versions found for package
 
-Methods defined here:\
+         Method resolution order:\
+             NoVersionsError\
+             exceptions.Exception\
+             exceptions.BaseException\
+             \_\_builtin\_\_.object
 
-**\_\_init\_\_**(self, pkg, index=None)
-:   `Args: pkg (str): name of package index (str): alternative index, if not given https://pypi.python.org will be used`
+         Data descriptors defined here:
 
-**check**(self)
-:   `Check if pkg has a later version Returns true if later version exists.`
+         \_\_weakref\_\_\
+             list of weak references to the object (if defined)
 
-**restart**(self)
-:   `Restart application with same args as it was started. Does **not** return`
+         ----------------------------------------------------------------------\
+         Methods inherited from exceptions.Exception:
 
-**upgrade**(self, dependencies=False)
-:   `Upgrade the package unconditionaly Args:     dependencies, update dependencies if True (see pip --no-deps)`
+         \_\_init\_\_(...)\
+             x.\_\_init\_\_(...) initializes x; see help(type(x)) for
+        signature
 
-**upgrade\_if\_needed**(self, restart=True, dependencies=False)
-:   `Upgrade the package if there is a later version available. Args:     restart, restart app if True     dependencies, update dependencies if True (see pip --no-deps)`
+         ----------------------------------------------------------------------\
+         Data and other attributes inherited from exceptions.Exception:
 
-* * * * *
+         \_\_new\_\_ = \<built-in method \_\_new\_\_ of type object\>\
+             T.\_\_new\_\_(S, ...) -\> a new object with type S, a
+        subtype of T
 
-Data descriptors defined here:\
+         ----------------------------------------------------------------------\
+         Methods inherited from exceptions.BaseException:
 
-**\_\_dict\_\_**
-:   `dictionary for instance variables (if defined)`
+         \_\_delattr\_\_(...)\
+             x.\_\_delattr\_\_('name') \<==\> del x.name
 
-**\_\_weakref\_\_**
-:   `list of weak references to the object (if defined)`
+         \_\_getattribute\_\_(...)\
+             x.\_\_getattribute\_\_('name') \<==\> x.name
 
- \
- class
-**NoVersionsError**([exceptions.Exception](exceptions.html#Exception))
+         \_\_getitem\_\_(...)\
+             x.\_\_getitem\_\_(y) \<==\> x[y]
 
-`   `
+         \_\_getslice\_\_(...)\
+             x.\_\_getslice\_\_(i, j) \<==\> x[i:j]
 
-`No versions found for package `
+             Use of negative indices is not supported.
 
- 
+         \_\_reduce\_\_(...)
 
-Method resolution order:
-:   [NoVersionsError](autoupgrade.html#NoVersionsError)
-:   [exceptions.Exception](exceptions.html#Exception)
-:   [exceptions.BaseException](exceptions.html#BaseException)
-:   [\_\_builtin\_\_.object](__builtin__.html#object)
+         \_\_repr\_\_(...)\
+             x.\_\_repr\_\_() \<==\> repr(x)
 
-* * * * *
+         \_\_setattr\_\_(...)\
+             x.\_\_setattr\_\_('name', value) \<==\> x.name = value
 
-Data descriptors defined here:\
+         \_\_setstate\_\_(...)
 
-**\_\_weakref\_\_**
-:   `list of weak references to the object (if defined)`
+         \_\_str\_\_(...)\
+             x.\_\_str\_\_() \<==\> str(x)
 
-* * * * *
+         \_\_unicode\_\_(...)
 
-Methods inherited from
-[exceptions.Exception](exceptions.html#Exception):\
+         ----------------------------------------------------------------------\
+         Data descriptors inherited from exceptions.BaseException:
 
-**\_\_init\_\_**(...)
-:   `x.__init__(...) initializes x; see help(type(x)) for signature`
+         \_\_dict\_\_
 
-* * * * *
+         args
 
-Data and other attributes inherited from
-[exceptions.Exception](exceptions.html#Exception):\
+         message
 
-**\_\_new\_\_** = \<built-in method \_\_new\_\_ of type object\>
+    class PkgNotFoundError(exceptions.Exception)
+    :    No package found
 
-`T.__new__(S, ...) -> a new object with type S, a subtype of T`
+         Method resolution order:\
+             PkgNotFoundError\
+             exceptions.Exception\
+             exceptions.BaseException\
+             \_\_builtin\_\_.object
 
-* * * * *
+         Data descriptors defined here:
 
-Methods inherited from
-[exceptions.BaseException](exceptions.html#BaseException):\
+         \_\_weakref\_\_\
+             list of weak references to the object (if defined)
 
-**\_\_delattr\_\_**(...)
-:   `x.__delattr__('name') <==> del x.name`
+         ----------------------------------------------------------------------\
+         Methods inherited from exceptions.Exception:
 
-**\_\_getattribute\_\_**(...)
-:   `x.__getattribute__('name') <==> x.name`
+         \_\_init\_\_(...)\
+             x.\_\_init\_\_(...) initializes x; see help(type(x)) for
+        signature
 
-**\_\_getitem\_\_**(...)
-:   `x.__getitem__(y) <==> x[y]`
+         ----------------------------------------------------------------------\
+         Data and other attributes inherited from exceptions.Exception:
 
-**\_\_getslice\_\_**(...)
-:   `x.__getslice__(i, j) <==> x[i:j]   Use of negative indices is not supported.`
+         \_\_new\_\_ = \<built-in method \_\_new\_\_ of type object\>\
+             T.\_\_new\_\_(S, ...) -\> a new object with type S, a
+        subtype of T
 
-**\_\_reduce\_\_**(...)
+         ----------------------------------------------------------------------\
+         Methods inherited from exceptions.BaseException:
 
-**\_\_repr\_\_**(...)
-:   `x.__repr__() <==> repr(x)`
+         \_\_delattr\_\_(...)\
+             x.\_\_delattr\_\_('name') \<==\> del x.name
 
-**\_\_setattr\_\_**(...)
-:   `x.__setattr__('name', value) <==> x.name = value`
+         \_\_getattribute\_\_(...)\
+             x.\_\_getattribute\_\_('name') \<==\> x.name
 
-**\_\_setstate\_\_**(...)
+         \_\_getitem\_\_(...)\
+             x.\_\_getitem\_\_(y) \<==\> x[y]
 
-**\_\_str\_\_**(...)
-:   `x.__str__() <==> str(x)`
+         \_\_getslice\_\_(...)\
+             x.\_\_getslice\_\_(i, j) \<==\> x[i:j]
 
-**\_\_unicode\_\_**(...)
+             Use of negative indices is not supported.
 
-* * * * *
+         \_\_reduce\_\_(...)
 
-Data descriptors inherited from
-[exceptions.BaseException](exceptions.html#BaseException):\
+         \_\_repr\_\_(...)\
+             x.\_\_repr\_\_() \<==\> repr(x)
 
-**\_\_dict\_\_**
+         \_\_setattr\_\_(...)\
+             x.\_\_setattr\_\_('name', value) \<==\> x.name = value
 
-**args**
+         \_\_setstate\_\_(...)
 
-**message**
+         \_\_str\_\_(...)\
+             x.\_\_str\_\_() \<==\> str(x)
 
- \
- class
-**PkgNotFoundError**([exceptions.Exception](exceptions.html#Exception))
+         \_\_unicode\_\_(...)
 
-`   `
+         ----------------------------------------------------------------------\
+         Data descriptors inherited from exceptions.BaseException:
 
-`No package found `
+         \_\_dict\_\_
 
- 
+         args
 
-Method resolution order:
-:   [PkgNotFoundError](autoupgrade.html#PkgNotFoundError)
-:   [exceptions.Exception](exceptions.html#Exception)
-:   [exceptions.BaseException](exceptions.html#BaseException)
-:   [\_\_builtin\_\_.object](__builtin__.html#object)
+         message
 
-* * * * *
+FUNCTIONS
+:   normalize\_version(v)
+    :   Helper function to normalize version Returns a comparable object
+        Args: v (str) version, e.g. "0.1.0"
 
-Data descriptors defined here:\
-
-**\_\_weakref\_\_**
-:   `list of weak references to the object (if defined)`
-
-* * * * *
-
-Methods inherited from
-[exceptions.Exception](exceptions.html#Exception):\
-
-**\_\_init\_\_**(...)
-:   `x.__init__(...) initializes x; see help(type(x)) for signature`
-
-* * * * *
-
-Data and other attributes inherited from
-[exceptions.Exception](exceptions.html#Exception):\
-
-**\_\_new\_\_** = \<built-in method \_\_new\_\_ of type object\>
-
-`T.__new__(S, ...) -> a new object with type S, a subtype of T`
-
-* * * * *
-
-Methods inherited from
-[exceptions.BaseException](exceptions.html#BaseException):\
-
-**\_\_delattr\_\_**(...)
-:   `x.__delattr__('name') <==> del x.name`
-
-**\_\_getattribute\_\_**(...)
-:   `x.__getattribute__('name') <==> x.name`
-
-**\_\_getitem\_\_**(...)
-:   `x.__getitem__(y) <==> x[y]`
-
-**\_\_getslice\_\_**(...)
-:   `x.__getslice__(i, j) <==> x[i:j]   Use of negative indices is not supported.`
-
-**\_\_reduce\_\_**(...)
-
-**\_\_repr\_\_**(...)
-:   `x.__repr__() <==> repr(x)`
-
-**\_\_setattr\_\_**(...)
-:   `x.__setattr__('name', value) <==> x.name = value`
-
-**\_\_setstate\_\_**(...)
-
-**\_\_str\_\_**(...)
-:   `x.__str__() <==> str(x)`
-
-**\_\_unicode\_\_**(...)
-
-* * * * *
-
-Data descriptors inherited from
-[exceptions.BaseException](exceptions.html#BaseException):\
-
-**\_\_dict\_\_**
-
-**args**
-
-**message**
-
- \
- **Functions**
-
-`      `
-
- 
-
-**normalize\_version**(v)
-:   `Helper function to normalize version Returns a comparable object Args:     v (str) version, e.g. "0.1.0"`
-
-  ----------- --- -------------------------------------------------------------------------------------------------------------------------
-   \
-   **Data**
-
-  `      `        **argv** = ['/usr/lib/python2.7/pydoc.py', '-w', 'autoupgrade']\
-                   **environ** = {'LC\_NUMERIC': 'sv\_SE.UTF-8', 'WINDOWID': '52428...re/:/usr/share/:/usr/share', 'XDG\_SEAT': 'seat0'}\
-                   **executable** = '/home/jorgen/dev/autoupgrade/venv/bin/python'
-  ----------- --- -------------------------------------------------------------------------------------------------------------------------
+DATA
+:   argv = ['/usr/lib/python2.7/pydoc.py', 'autoupgrade'] environ =
+    {'LC\_NUMERIC': 'sv\_SE.UTF-8', 'WINDOWID': '52428...re/:/usr/...
+    executable = '/home/jorgen/dev/autoupgrade/venv/bin/python'
 
 
