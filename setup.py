@@ -15,4 +15,5 @@ setup(name='autoupgrade',
       description='Automatic upgrade of python modules and packages',
       long_description=open('README.txt').read(),
       packages=['autoupgrade'],
-      url = "https://bitbucket.org/jorkar/autoupgrade")
+      url = "https://bitbucket.org/jorkar/autoupgrade",
+      install_requires = ["BeautifulSoup"])

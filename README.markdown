@@ -45,6 +45,9 @@ Test for Python 3 will be done some time.
 
 #Release notes
 
+##0.1.1
+- Dependencies updated
+
 ##0.1.0
 Initial release
 
