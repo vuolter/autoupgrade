@@ -40,19 +40,17 @@ Methods
 ::
 
     :::python
+    __init__(self, pkg, index=None)
 
- **init**\ (self, pkg, index=None) Args: pkg (str): name of package
-index (str): alternative index, if not given https://pypi.python.org
-will be used
-
-::
+    Args:
+    pkg (str): name of package
+    index (str): alternative index, if not given <https://pypi.python.org> will be used
 
     :::python
     check(self)
 
-Check if pkg has a later version Returns true if later version exists.
-
-::
+    Check if pkg has a later version
+    Returns true if later version exists.
 
     :::python
     restart(self)
@@ -63,18 +61,19 @@ return
 ::
 
     :::python
+    upgrade(self, dependencies=False)
 
- upgrade(self, dependencies=False) Upgrade the package unconditionaly
-Args: dependencies, update dependencies if True (see pip--no-deps)
+Upgrade the package unconditionaly Args: dependencies, update
+dependencies if True (see pip--no-deps)
 
 ::
 
     :::python
+    upgrade_if_needed(self, restart=True, dependencies=False)
 
- upgrade\_if\_needed(self, restart=True, dependencies=False) Upgrade the
-package if there is a later version available. Args: restart, restart
-app if True dependencies, update dependencies if True (see pip
---no-deps)
+Upgrade the package if there is a later version available. Args:
+restart, restart app if True dependencies, update dependencies if True
+(see pip --no-deps)
 
 Supported platforms
 -------------------
