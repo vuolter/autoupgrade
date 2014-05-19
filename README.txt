@@ -8,11 +8,12 @@ quick start
 
 ::
 
+    :::python
     from autoupgrade import AutoUpgrade
-        AutoUpgrade("pip").upgrade_if_needed()
+    AutoUpgrade("pip").upgrade_if_needed()
 
 The above will upgrade "pip" if there is a new version of pip out there.
-The upgrade will be unattended and the pyuthon script will be restarted
+The upgrade will be unattended and the python script will be restarted
 
 installation
 ------------
@@ -20,6 +21,12 @@ installation
 ::
 
     pip install autoupgrade
+
+or install latest from repo:
+
+::
+
+    pip install https://bitbucket.org/jorkar/autoupgrade/get/master.tar.gz
 
 api
 ---
@@ -42,15 +49,17 @@ Methods
     :::python
     __init__(self, pkg, index=None)
 
-    Args:
-    pkg (str): name of package
-    index (str): alternative index, if not given <https://pypi.python.org> will be used
+Args: pkg (str): name of package index (str): alternative index, if not
+given https://pypi.python.org will be used
+
+::
 
     :::python
     check(self)
 
-    Check if pkg has a later version
-    Returns true if later version exists.
+Check if pkg has a later version Returns true if later version exists.
+
+::
 
     :::python
     restart(self)
@@ -84,15 +93,15 @@ and \*nix.
 Test for Python 3 will be done some time.
 
 Release notes
-=============
+-------------
 
 0.1.1
------
+~~~~~
 
 -  Dependencies updated
 
 0.1.0
------
+~~~~~
 
 Initial release
 
