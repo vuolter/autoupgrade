@@ -13,11 +13,22 @@ class NoVersionsError(Exception):
     """No versions found for package"""
     
 def normalize_version(v):
+    """Helper function to normalize version
+    Returns a comparable object
+    Args:
+        v (str) version, e.g. "0.1.0"
+    
+    """
     return [int(x) for x in v.split(".")]
 
 class AutoUpgrade(object):
+    """AutoUpgrade class, holds one package
+    """
     
     def __init__(self, pkg, index = None):
+        """Args:
+                pkg (str): name of package
+                index (str): alternative index, if not given https://pypi.python.org will be used"""
         self.pkg = pkg
         if index:
             self.index = index
@@ -27,6 +38,11 @@ class AutoUpgrade(object):
             self.index_set = False
         
     def upgrade_if_needed(self, restart = True, dependencies = False):
+        """ Upgrade the package if there is a later version available.
+            Args:
+                restart, restart app if True
+                dependencies, update dependencies if True (see pip --no-deps)
+        """
         if self.check():
             print "Upgrading %s" % self.pkg
             self.upgrade(dependencies)
@@ -34,6 +50,10 @@ class AutoUpgrade(object):
                 self.restart()
             
     def upgrade(self, dependencies = False):
+        """ Upgrade the package unconditionaly
+            Args:
+                dependencies, update dependencies if True (see pip --no-deps)
+        """
         pip_args = [ '-vvv' ]
         proxy = environ.get('http_proxy')
         if proxy:
@@ -50,12 +70,19 @@ class AutoUpgrade(object):
             pip_args.append("--upgrade")
         a=pip.main(initial_args = pip_args)
         print a
+        return a
         
     def restart(self):
+        """ Restart application with same args as it was started.
+            Does **not** return
+        """
         print "Restarting " + executable + " " + str(argv) 
         execl(executable, *([executable]+argv))
         
     def check(self):
+        """ Check if pkg has a later version
+            Returns true if later version exists.
+        """
         current = self._get_current()
         highest = self._get_highest_version()
         return highest > current 
