@@ -1,10 +1,90 @@
-===========
 autoupgrade
 ===========
+
 Automatic upgrade of Python modules and packages
+
+quick start
+-----------
+
+::
+
+    from autoupgrade import AutoUpgrade
+        AutoUpgrade("pip").upgrade_if_needed()
+
+The above will upgrade "pip" if there is a new version of pip out there.
+The upgrade will be unattended and the pyuthon script will be restarted
+
+installation
+------------
+
+::
+
+    pip install autoupgrade
+
+api
+---
+
+classes
+~~~~~~~
+
+::
+
+    :::python
+    class AutoUpgrade(\_\_builtin\_\_.object)
+    :    AutoUpgrade class, holds one package
+
+         Methods defined here:
+
+         \_\_init\_\_(self, pkg, index=None)\
+             Args:\
+             pkg (str): name of package\
+             index (str): alternative index, if not given
+        <https://pypi.python.org> will be used
+
+         check(self)\
+             Check if pkg has a later version\
+             Returns true if later version exists.
+
+         restart(self)\
+             Restart application with same args as it was started.\
+             Does **not** return
+
+         upgrade(self, dependencies=False)\
+             Upgrade the package unconditionaly\
+             Args:\
+                 dependencies, update dependencies if True (see pip
+        --no-deps)
+
+         upgrade\_if\_needed(self, restart=True, dependencies=False)\
+             Upgrade the package if there is a later version available.\
+             Args:\
+                 restart, restart app if True\
+                 dependencies, update dependencies if True (see pip
+        --no-deps)
+
+Supported platforms
+-------------------
+
+Currently tested on Linux with Python 2.7. Should be usable on Windows
+and \*nix.
+
+Test for Python 3 will be done some time.
+
+Release notes
+=============
+
+0.1.1
+-----
+
+-  Dependencies updated
+
+0.1.0
+-----
+
+Initial release
 
 Info
 ====
 
-- Homepage: https://bitbucket.org/jorkar/autoupgrade
+-  Homepage: https://bitbucket.org/jorkar/autoupgrade
 

@@ -15,25 +15,42 @@ The upgrade will be unattended and the pyuthon script will be restarted
 
 ## api
 
-### AutoUpgrade
+### classes
 
-AutoUpgrade is the only class in the moment. Pulbic methods:
+	:::python
+    class AutoUpgrade(\_\_builtin\_\_.object)
+    :    AutoUpgrade class, holds one package
 
-	upgrade_if_needed(self, restart = True, dependencies = False)
+         Methods defined here:
 
-Upgrade automatically the package if needed. Flags for restart and wether dependencises shall be installed is available.
+         \_\_init\_\_(self, pkg, index=None)\
+             Args:\
+             pkg (str): name of package\
+             index (str): alternative index, if not given
+        <https://pypi.python.org> will be used
 
-	upgrade(self, dependencies = False)
+         check(self)\
+             Check if pkg has a later version\
+             Returns true if later version exists.
 
-upgrade always /you should run check prior to this)
+         restart(self)\
+             Restart application with same args as it was started.\
+             Does **not** return
 
-	restart(self)
+         upgrade(self, dependencies=False)\
+             Upgrade the package unconditionaly\
+             Args:\
+                 dependencies, update dependencies if True (see pip
+        --no-deps)
 
-restart always
+         upgrade\_if\_needed(self, restart=True, dependencies=False)\
+             Upgrade the package if there is a later version available.\
+             Args:\
+                 restart, restart app if True\
+                 dependencies, update dependencies if True (see pip
+        --no-deps)
 
-	check(self)
 
-returns true if autoupdate finds a newer version
 
 ## Supported platforms
 
