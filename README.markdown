@@ -18,39 +18,38 @@ The upgrade will be unattended and the pyuthon script will be restarted
 ### classes
 
 	:::python
-    class AutoUpgrade(\_\_builtin\_\_.object)
-    :    AutoUpgrade class, holds one package
+    class AutoUpgrade(__builtin__.object)
+AutoUpgrade class, holds one package
 
-         Methods defined here:
+#### Methods
+	:::python
+    __init__(self, pkg, index=None)
+Args:
+pkg (str): name of package
+index (str): alternative index, if not given <https://pypi.python.org> will be used
 
-         \_\_init\_\_(self, pkg, index=None)\
-             Args:\
-             pkg (str): name of package\
-             index (str): alternative index, if not given
-        <https://pypi.python.org> will be used
+	:::python
+	check(self)
+Check if pkg has a later version
+Returns true if later version exists.
 
-         check(self)\
-             Check if pkg has a later version\
-             Returns true if later version exists.
+	:::python
+	restart(self)
+Restart application with same args as it was started.
+Does **not** return
 
-         restart(self)\
-             Restart application with same args as it was started.\
-             Does **not** return
+	:::python
+    upgrade(self, dependencies=False)
+Upgrade the package unconditionaly
+Args:
+dependencies, update dependencies if True (see pip--no-deps)
 
-         upgrade(self, dependencies=False)\
-             Upgrade the package unconditionaly\
-             Args:\
-                 dependencies, update dependencies if True (see pip
-        --no-deps)
-
-         upgrade\_if\_needed(self, restart=True, dependencies=False)\
-             Upgrade the package if there is a later version available.\
-             Args:\
-                 restart, restart app if True\
-                 dependencies, update dependencies if True (see pip
-        --no-deps)
-
-
+	:::python
+    upgrade_if_needed(self, restart=True, dependencies=False)
+Upgrade the package if there is a later version available.
+Args:
+restart, restart app if True
+dependencies, update dependencies if True (see pip --no-deps)
 
 ## Supported platforms
 
