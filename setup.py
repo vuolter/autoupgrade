@@ -16,4 +16,4 @@ setup(name='autoupgrade',
       long_description=open('README.txt').read(),
       packages=['autoupgrade'],
       url = "https://bitbucket.org/jorkar/autoupgrade",
-      install_requires = ["BeautifulSoup"])
+      install_requires = ["BeautifulSoup4"])
