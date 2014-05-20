@@ -69,6 +69,11 @@ Test for Python 3 will be done some time.
 
 ##Release notes
 
+###0.1.2
+- Setup file fixes
+- Removed verbose output as default
+- Return value fixed of upgrade()
+
 ###0.1.1
 - Dependencies updated
 

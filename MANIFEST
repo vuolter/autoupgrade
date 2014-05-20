@@ -3,3 +3,4 @@ README.txt
 setup.py
 autoupgrade/__init__.py
 autoupgrade/version.py
+test/test.py

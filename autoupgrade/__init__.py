@@ -52,9 +52,10 @@ class AutoUpgrade(object):
     def upgrade(self, dependencies = False):
         """ Upgrade the package unconditionaly
             Args:
-                dependencies, update dependencies if True (see pip --no-deps)
+                dependencies: update dependencies if True (see pip --no-deps)
+            Returns True if pip was sucessful
         """
-        pip_args = [ '-vvv' ]
+        pip_args = ""
         proxy = environ.get('http_proxy')
         if proxy:
             pip_args.append('--proxy')
@@ -69,8 +70,7 @@ class AutoUpgrade(object):
         if self._get_current() != [-1]:
             pip_args.append("--upgrade")
         a=pip.main(initial_args = pip_args)
-        print a
-        return a
+        return a==0
         
     def restart(self):
         """ Restart application with same args as it was started.
