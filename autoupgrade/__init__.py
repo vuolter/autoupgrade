@@ -55,7 +55,7 @@ class AutoUpgrade(object):
                 dependencies: update dependencies if True (see pip --no-deps)
             Returns True if pip was sucessful
         """
-        pip_args = ""
+        pip_args = []
         proxy = environ.get('http_proxy')
         if proxy:
             pip_args.append('--proxy')
