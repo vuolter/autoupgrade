@@ -5,6 +5,7 @@ import pkg_resources
 from os import execl, environ
 from sys import executable, argv
 import pip
+import re
 
 class PkgNotFoundError(Exception):
     """No package found"""
@@ -19,7 +20,18 @@ def normalize_version(v):
         v (str) version, e.g. "0.1.0"
     
     """
-    return [int(x) for x in v.split(".")]
+    rv = []
+    for x in v.split("."):
+        try:
+            rv.append(int(x))
+        except ValueError:
+            for y in re.split("([0-9]+)", x):
+                try:
+                    if y != '':
+                        rv.append(int(y))
+                except ValueError:
+                    rv.append(y) 
+    return rv
 
 class AutoUpgrade(object):
     """AutoUpgrade class, holds one package

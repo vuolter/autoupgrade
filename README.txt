@@ -95,6 +95,11 @@ Test for Python 3 will be done some time.
 Release notes
 -------------
 
+0.1.4
+~~~~~
+
+-  Fixed bug when version contains characters.
+
 0.1.3
 ~~~~~
 
