@@ -40,14 +40,9 @@ class AutoUpgrade(object):
     def __init__(self, pkg, index = None):
         """Args:
                 pkg (str): name of package
-                index (str): alternative index, if not given https://pypi.python.org will be used"""
+                index (str): alternative index, if not given default for *pip* will be used"""
         self.pkg = pkg
-        if index:
-            self.index = index
-            self.index_set = True
-        else:
-            self.index = "https://pypi.python.org/" 
-            self.index_set = False
+        self.index = index
         
     def upgrade_if_needed(self, restart = True, dependencies = False):
         """ Upgrade the package if there is a later version available.
@@ -74,7 +69,7 @@ class AutoUpgrade(object):
             pip_args.append(proxy)
         pip_args.append('install')
         pip_args.append(self.pkg)
-        if self.index_set:
+        if self.index is not None:
             pip_args.append('-i')
             pip_args.append("{}/simple/".format(self.index))
         if not dependencies:

@@ -33,7 +33,7 @@ AutoUpgrade class, holds one package
 
 Args:
 pkg (str): name of package
-index (str): alternative index, if not given <https://pypi.python.org> will be used
+index (str): alternative index, if not given default from *pip* will be used
 
 	:::python
 	check(self)
