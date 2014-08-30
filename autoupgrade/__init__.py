@@ -40,7 +40,9 @@ class AutoUpgrade(object):
     def __init__(self, pkg, index = None):
         """Args:
                 pkg (str): name of package
-                index (str): alternative index, if not given default for *pip* will be used"""
+                index (str): alternative index, if not given default for *pip* will be used. Include
+                             full index url, e.g. https://example.com/simple
+        """
         self.pkg = pkg
         self.index = index
         
@@ -102,7 +104,7 @@ class AutoUpgrade(object):
         return current
     
     def _get_highest_version(self):
-        url = "{}/simple/{}/".format(self.index, self.pkg)
+        url = "{}/{}/".format(self.index, self.pkg).replace('//', '/')
         try:
             html = urllib.urlopen(url)
         except IOError:

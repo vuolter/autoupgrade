@@ -33,7 +33,8 @@ AutoUpgrade class, holds one package
 
 Args:
 pkg (str): name of package
-index (str): alternative index, if not given default from *pip* will be used
+index (str): alternative index, if not given default from *pip* will be used. Include
+full index url, e.g. https://example.com/simple
 
 	:::python
 	check(self)
@@ -68,6 +69,11 @@ Test for Python 3 will be done some time.
 
 
 ##Release notes
+
+###0.1.5
+
+Corrections:
+- Issue #1, Extra index did not work for all servers. 
 
 ###0.1.4
 - Fixed bug when version contains characters.
