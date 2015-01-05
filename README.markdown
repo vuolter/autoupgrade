@@ -29,7 +29,7 @@ AutoUpgrade class, holds one package
 
 #### Methods
 	:::python
-	__init__(self, pkg, index=None)
+	__init__(self, pkg, index=None, verbose=False)
 
 Args:
 pkg (str): name of package
@@ -70,6 +70,12 @@ Test for Python 3 will be done some time.
 
 ##Release notes
 
+###0.2.0
+Corrections:
+ - Issue #2, Index did not work when specified 
+ - Issue #3, Autoupgrade should not print to console (added verbose flag to keep backward compatibility
+ - Issue #4, Support for pip > 0.6
+ 
 ###0.1.5
 
 Corrections:
