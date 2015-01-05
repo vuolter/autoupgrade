@@ -5,7 +5,6 @@ import pkg_resources
 from os import execl, environ
 from sys import executable, argv
 import pip
-import re
 
 class PkgNotFoundError(Exception):
     """No package found"""
@@ -37,14 +36,20 @@ class AutoUpgrade(object):
     """AutoUpgrade class, holds one package
     """
     
-    def __init__(self, pkg, index = None):
+    def __init__(self, pkg, index = None, verbose = False):
         """Args:
                 pkg (str): name of package
                 index (str): alternative index, if not given default for *pip* will be used. Include
                              full index url, e.g. https://example.com/simple
         """
         self.pkg = pkg
-        self.index = index
+        if index is None:
+            self.index = "https://pypi.python.org/simple"
+            self._index_set = False
+        else:
+            self.index = index.rstrip('/')
+            self._index_set = True
+        self.verbose = verbose
         
     def upgrade_if_needed(self, restart = True, dependencies = False):
         """ Upgrade the package if there is a later version available.
@@ -53,7 +58,8 @@ class AutoUpgrade(object):
                 dependencies, update dependencies if True (see pip --no-deps)
         """
         if self.check():
-            print "Upgrading %s" % self.pkg
+            if self.verbose:
+                print "Upgrading %s" % self.pkg
             self.upgrade(dependencies)
             if restart:
                 self.restart()
@@ -71,21 +77,27 @@ class AutoUpgrade(object):
             pip_args.append(proxy)
         pip_args.append('install')
         pip_args.append(self.pkg)
-        if self.index is not None:
+        if self._index_set:
             pip_args.append('-i')
-            pip_args.append("{}/simple/".format(self.index))
+            pip_args.append(self.index)
         if not dependencies:
             pip_args.append("--no-deps")
         if self._get_current() != [-1]:
             pip_args.append("--upgrade")
-        a=pip.main(initial_args = pip_args)
+        try:
+            a=pip.main(args = pip_args)
+        except TypeError:   
+            # pip changed in 0.6.0 from initial_args to args, this is for backwards compatibility
+            # can be removed when pip 0.5 is no longer in use at all (2025...)  
+            a=pip.main(initial_args = pip_args)
         return a==0
         
     def restart(self):
         """ Restart application with same args as it was started.
             Does **not** return
         """
-        print "Restarting " + executable + " " + str(argv) 
+        if self.verbose:
+            print "Restarting " + executable + " " + str(argv) 
         execl(executable, *([executable]+argv))
         
     def check(self):
@@ -104,12 +116,8 @@ class AutoUpgrade(object):
         return current
     
     def _get_highest_version(self):
-        url = "{}/{}/".format(self.index, self.pkg).replace('//', '/')
-        try:
-            html = urllib.urlopen(url)
-        except IOError:
-            print "Could not connect to %s" % url
-            return [-1]
+        url = "{}/{}/".format(self.index, self.pkg)
+        html = urllib.urlopen(url)
         if html.getcode() != 200:
             raise PkgNotFoundError
         soup = BeautifulSoup(html.read())

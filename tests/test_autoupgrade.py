@@ -1,6 +1,6 @@
 from unittest import TestCase
-#import autoupgrade
-from autoupgrade import normalize_version
+
+from autoupgrade import normalize_version, AutoUpgrade
 #import sys
 
 
@@ -21,3 +21,11 @@ class TestFunctions(TestCase):
         self.assertGreater(normalize_version('1.2.3'), normalize_version('1.2'))
         self.assertGreater(normalize_version('1.2A.3'), normalize_version('1.2.3'))
         self.assertEqual(normalize_version('1.2.3'), normalize_version('1.2.3'))
+        
+    def test_upgrade_default(self):
+        bs = AutoUpgrade("beautifulsoup4", verbose = True)
+        bs.upgrade_if_needed(False)
+        
+    def test_upgrade_index(self):
+        bs = AutoUpgrade("beautifulsoup4", "https://pypi.python.org/simple", verbose = True)
+        bs.upgrade_if_needed(False)
