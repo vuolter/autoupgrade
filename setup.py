@@ -1,31 +1,32 @@
-# coding=utf-8
+# -*- coding: utf-8 -*-
 
-from distutils.core import setup
-#from setuptools import setup
+from setuptools import setup
 
-__version__ = "unknown"
-exec(open('autoupgrade/version.py').read())
-print "autoupgrade version: " + __version__
-
-setup(name='autoupgrade',
-      version=__version__,
-      author= 'Jörgen Karlsson',
-      author_email='jorgen@karlsson.com',
-      description='Automatic upgrade of python modules and packages',
-      long_description=open('README.txt').read(),
-      packages=['autoupgrade'],
-      url = "https://bitbucket.org/jorkar/autoupgrade",
-      install_requires = [
-        "pip", 
-        "BeautifulSoup4"
-        ],
-      classifiers=[
-        "Development Status :: 3 - Alpha",
-        "Topic :: Utilities",
+setup(
+    name="autoupgrade-ng",
+    version="0.3.0",
+    author="Walter Purcaro",
+    author_email="vuolter@gmail.com",
+    description="Automatic upgrade of PyPI packages",
+    long_description=open('README.md').read(),
+    keywords=['autoupgrade', 'pip-upgrade', 'pip'],
+    packages=['autoupgrade'],
+    include_package_data=True,
+    url="https://github.com/vuolter/autoupgrade-ng",
+    install_requires=['pip'],
+    obsoletes=['autoupgrade'],
+    zip_safe=True,
+    classifiers=[
+        "Development Status :: 5 - Production/Stable",
+        "Environment :: Other Environment",
         "License :: OSI Approved :: MIT License",
         "Intended Audience :: Developers",
-        "Operating System :: POSIX :: Linux",
-        "Programming Language :: Python :: 2.7",
-        "Topic :: System :: Software Distribution"
-        ]
-      )
+        "Intended Audience :: System Administrators",
+        "Operating System :: OS Independent",
+        "Programming Language :: Python",
+        "Programming Language :: Python :: 2",
+        "Programming Language :: Python :: 3",
+        "Topic :: System :: Software Distribution",
+        "Topic :: Utilities"
+    ]
+)

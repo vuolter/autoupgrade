@@ -1,4 +1,4 @@
 dist/
 .settings/
 *.pyc
-venv/
+env/
