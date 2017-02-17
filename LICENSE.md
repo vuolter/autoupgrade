@@ -2,6 +2,7 @@ The MIT License (MIT)
 =====================
 
 Copyright © 2014, Jörgen Karlsson <jorgen@karlsson.com>
+
 Copyright © 2017, Walter Purcaro <vuolter@gmail.com>
 
 Permission is hereby granted, free of charge, to any person
