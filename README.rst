@@ -1,7 +1,33 @@
 AutoUpgrade
 ===========
 
-Automatic upgrade of PyPI packages.
+.. image:: https://img.shields.io/pypi/v/autoupgrade-ng.svg
+   :target: https://pypi.python.org/pypi/autoupgrade-ng
+
+.. image:: https://img.shields.io/github/issues/vuolter/autoupgrade.svg
+   :target: https://github.com/vuolter/autoupgrade/issues
+
+.. image:: https://img.shields.io/pypi/dm/autoupgrade-ng.svg
+   :target: https://pypi.python.org/pypi/autoupgrade-ng
+
+.. image:: https://img.shields.io/pypi/l/autoupgrade-ng.svg
+   :target: https://pypi.python.org/pypi/autoupgrade-ng
+
+.. image:: https://img.shields.io/pypi/format/autoupgrade-ng.svg
+   :target: https://pypi.python.org/pypi/autoupgrade-ng
+
+.. image:: https://img.shields.io/pypi/pyversions/autoupgrade-ng.svg
+   :target: https://pypi.python.org/pypi/autoupgrade-ng
+
+.. image:: https://img.shields.io/pypi/status/autoupgrade-ng.svg
+   :target: https://pypi.python.org/pypi/autoupgrade-ng
+
+.. image:: https://img.shields.io/twitter/url/https/twitter.com/WalterPurcaro.svg?style=social
+   :target: https://twitter.com/intent/tweet?text=Wow:&url=%5Bobject%20Object%5D
+
+.. image:: https://img.shields.io/github/stars/vuolter/autoupgrade.svg
+   :target: https://github.com/vuolter/autoupgrade/stargazers
+
 
 Quick Start
 -----------
@@ -9,7 +35,7 @@ Quick Start
 ::
 
     from autoupgrade import Package
-    Package(packagename).smartupgrade()
+    Package(<packagename>).smartupgrade()
 
 Example:
 
@@ -18,19 +44,17 @@ Example:
     from autoupgrade import Package
     Package('pip').smartupgrade()
 
-| The above will upgrade the Python package ``pip`` only if there is a
-  new version
-| available on the PyPI.
-| The upgrade will be unattended and the python script will be
-  restarted.
+The above will upgrade the Python package ``pip`` only if there is a new version
+available on the PyPI.
+The upgrade will be unattended and the python script will be restarted.
 
-Old methods are still supported: you can accomplish the same task
-calling:
+Old methods are still supported; you can accomplish the same task calling:
 
 ::
 
     from autoupgrade import AutoUpgrade
     AutoUpgrade('pip').upgrade_if_needed()
+
 
 Installation
 ------------
@@ -39,12 +63,11 @@ Installation
 
     pip install autoupgrade-ng
 
-| All the modules will be installed under the *autoupgrade* package, so
-  **make
-  sure you have already removed the old [AutoUpgrade package]
-  (https://pypi.python.org/pypi/autoupgrade) before install this** to
-  avoid an
-| installation conflict.
+All the modules will be installed under the *autoupgrade* package, so **make
+sure you have already removed the old AutoUpgrade package
+(https://pypi.python.org/pypi/autoupgrade) before install this** to avoid an
+installation conflict.
+
 
 Usage
 -----
@@ -76,15 +99,14 @@ Methods
 **Arguments**:
 
 -  ``pkg`` (str) name of package.
--  ``index`` (str) alternative index, if not given default from *pip*
-   will be used.
-   Include full index url \_(e.g. \ https://example.com/simple)_.
-
-**Return**: None.
+-  | ``index`` (str) alternative index, if not given default from *pip*
+     will be used.
+   | Include full index url \_(e.g. \ https://example.com/simple)_.
+   | **Return**: None.
 
 ::
 
-    check(self)
+   check(self)
 
 **Decription**: Check if ``pkg`` has a later version.
 
@@ -113,29 +135,31 @@ Methods
 -  ``dependencies`` update dependencies if True *(see
    ``pip --no-deps``)*.
 -  ``prerelease`` update to pre-release and development versions.
--  ``force`` reinstall all packages even if they are already up-to-date.
+-  | ``force`` reinstall all packages even if they are already
+     up-to-date.
 
 **Return**: None.
 
 ::
 
-    smartupgrade(self, restart=True, dependencies=False, prerelease=False)
+   smartupgrade(self, restart=True, dependencies=False,
+   prerelease=False)
 
-**Decription**: Upgrade the package if there is a later version
-available.
+**Decription**: Upgrade the package if there is a later version available.
 
 **Arguments**:
 
 -  ``restart`` restart app if True.
 -  ``dependencies`` update dependencies if True *(see
    ``pip --no-deps``)*.
--  ``prerelease`` update to pre-release and development versions.
+-  | ``prerelease`` update to pre-release and development versions.
 
 **Return**: None.
 
 ::
 
-    upgrade_if_needed(self, restart=True, dependencies=False, prerelease=False)
+   upgrade\_if\_needed(self, restart=True, dependencies=False,
+   prerelease=False)
 
 **Decription**: Legacy method refering to ``smartupgrade`` one.
 
@@ -143,11 +167,53 @@ available.
 
 **Return**: Same as ``smartupgrade``.
 
-Licensing
----------
 
-Please refer to the included LICENSE for the extended license.
+Release notes
+-------------
 
---------------
+**0.3.0**:
 
-(c) 2017 Walter Purcaro
+-  Fork of autoupgrade (https://pypi.python.org/pypi/autoupgrade).
+-  Python 3 support.
+-  Removed unnecessary dependencies.
+-  Pre-release and force-reinstall support.
+-  Massive code refactoring and cleaning.
+-  Updated README and LICENSE.
+-  New exception ``PIPError`` to handle pip errors.
+-  Main class renamed to ``Package``.
+-  More verbose messages.
+-  Small code optimizations and improvements.
+
+**0.2.0**:
+
+-  Issue #2, Index did not work when specified.
+-  Issue #3, Autoupgrade should not print to console (added verbose flag
+   to
+   keep backward compatibility.
+-  Issue #4, Support for pip > v0.6 .
+
+**0.1.5**:
+
+-  Issue #1, Extra index did not work for all servers.
+
+**0.1.4**:
+
+-  Fixed bug when version contains characters.
+
+**0.1.3**:
+
+-  Fixed vital fault in v0.1.2 .
+
+**0.1.2**:
+
+-  Setup file fixes
+-  Removed verbose output as default.
+-  Return value fixed of method ``upgrade``.
+
+**0.1.1**:
+
+-  Dependencies updated.
+
+**0.1.0**:
+
+-  Initial release.

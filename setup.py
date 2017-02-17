@@ -16,6 +16,7 @@ setup(
     download_url="https://github.com/vuolter/autoupgrade/releases",
     install_requires=['pip'],
     obsoletes=['autoupgrade'],
+    license='MIT License',
     zip_safe=True,
     classifiers=[
         "Development Status :: 5 - Production/Stable",

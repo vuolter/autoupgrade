@@ -1,14 +1,39 @@
 AutoUpgrade
 ===========
+[![PyPI](https://img.shields.io/pypi/v/autoupgrade-ng.svg)]
+(https://pypi.python.org/pypi/autoupgrade-ng)
+[![GitHub issues](https://img.shields.io/github/issues/vuolter/autoupgrade.svg)]
+(https://github.com/vuolter/autoupgrade/issues)
+[![PyPI](https://img.shields.io/pypi/dm/autoupgrade-ng.svg)]
+(https://pypi.python.org/pypi/autoupgrade-ng)
+[![PyPI](https://img.shields.io/pypi/l/autoupgrade-ng.svg)]
+(https://pypi.python.org/pypi/autoupgrade-ng)
+[![PyPI](https://img.shields.io/pypi/format/autoupgrade-ng.svg)]
+(https://pypi.python.org/pypi/autoupgrade-ng)
+[![PyPI](https://img.shields.io/pypi/pyversions/autoupgrade-ng.svg)]
+(https://pypi.python.org/pypi/autoupgrade-ng)
+[![PyPI](https://img.shields.io/pypi/status/autoupgrade-ng.svg)]
+(https://pypi.python.org/pypi/autoupgrade-ng)
+[![Twitter](https://img.shields.io/twitter/url/https/twitter.com/WalterPurcaro.svg?style=social)]
+(https://twitter.com/intent/tweet?text=Wow:&url=%5Bobject%20Object%5D)
 
 Automatic upgrade of PyPI packages.
+
+
+Table of contents
+-----------------
+
+- [Quick Start](#quick-start)
+- [Installation](#installation)
+- [Usage](#usage)
+- [Licensing](#licensing)
 
 
 Quick Start
 -----------
 
     from autoupgrade import Package
-    Package(packagename).smartupgrade()
+    Package(<packagename>).smartupgrade()
 
 Example:
 
@@ -19,7 +44,7 @@ The above will upgrade the Python package `pip` only if there is a new version
 available on the PyPI.
 The upgrade will be unattended and the python script will be restarted.
 
-Old methods are still supported: you can accomplish the same task calling:
+Old methods are still supported; you can accomplish the same task calling:
 
     from autoupgrade import AutoUpgrade
     AutoUpgrade('pip').upgrade_if_needed()
