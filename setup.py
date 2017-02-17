@@ -8,7 +8,7 @@ setup(
     author="Walter Purcaro",
     author_email="vuolter@gmail.com",
     description="Automatic upgrade of PyPI packages",
-    long_description=open('README.md').read(),
+    long_description=open('README.rst').read(),
     keywords=['autoupgrade', 'pip-upgrade', 'pip'],
     packages=['autoupgrade'],
     include_package_data=True,
